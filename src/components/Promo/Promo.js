@@ -3,38 +3,32 @@ import './Promo.css';
 
 function Promo() {
 
-    const ref = React.useRef(null);
-
-  function scrollThrough() {
-    ref.current.scrollIntoView({ behavior: "smooth" });
-  }
-
     return (
         <section className="promo">
             <div className="promo__container">
                 <h1 className="promo__title">Учебный проект студента факультета Веб-разработки.</h1>
                 <div className="promo__buttons">
-                    <button
-                        type="button"
-                        aria-label="посмотреть проект"
-                        className="promo__button"
-                        ref={ref}
-                        onClick={scrollThrough}
-                    >О проекте</button>
-                    <button
-                        type="button"
-                        aria-label="посмотреть проект"
-                        className="promo__button"
-                        ref={ref}
-                        onClick={scrollThrough}
-                    >Технологии</button>
-                    <button
-                        type="button"
-                        aria-label="посмотреть проект"
-                        className="promo__button"
-                        ref={ref}
-                        onClick={scrollThrough}
-                    >Студент</button>
+                    <a href="#proj">
+                        <button
+                            type="button"
+                            aria-label="О проекте"
+                            className="promo__button"
+                        >О проекте</button>
+                    </a>
+                    <a href="#techs">
+                        <button
+                            type="button"
+                            aria-label="Технологии"
+                            className="promo__button"
+                        >Технологии</button>
+                    </a>
+                    <a href="#about">
+                        <button
+                            type="button"
+                            aria-label="Студент"
+                            className="promo__button"
+                        >Студент</button>
+                    </a>
                 </div>
             </div>
         </section>

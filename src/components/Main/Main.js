@@ -16,12 +16,12 @@ function Main(props) {
 
             {!props.islogOn && (
                 <main className="content">
-                <Promo />
-                <AboutProject />
-                <Techs />
-                <AboutMe />
-                <Portfolio />
-            </main>
+                    <Promo />
+                    <AboutProject />
+                    <Techs />
+                    <AboutMe />
+                    <Portfolio />
+                </main>
             )}
         </>
     );
