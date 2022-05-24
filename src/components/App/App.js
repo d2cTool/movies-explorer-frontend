@@ -56,9 +56,6 @@ function App() {
 
   const userId = localStorage.getItem("id") || "";
 
-
-
-
   React.useEffect(() => {
 
     if (userId) {
@@ -71,8 +68,6 @@ function App() {
   [userId, history, location.pathname]);
   
   React.useEffect(() => {
-  
-
     if (isLoading === true) {
       getUser()
         .then((userData) => {
@@ -466,7 +461,6 @@ function App() {
             onDeleteMoviesSaved={handleDeleteMoviesSaved}
             handleMovieLike={handleMovieLike}
             changeChecked={changeChecked}
-
           />
 
           <Route path="*">

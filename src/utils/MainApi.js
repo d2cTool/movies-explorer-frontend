@@ -45,7 +45,7 @@ export const login = ({email, password}) => {
 
 // выход из профиля
 export const signOut = () => {
-    return fetch(`${BASE_URL}/logout`, {
+    return fetch(`${BASE_URL}/signout`, {
         method: "GET",
         credentials: "include",
         headers: {

@@ -11,6 +11,12 @@
     position: relative;
 }
 
+.header_type_custom {
+    padding: 70px 0 0;
+    margin: 0 auto;
+    width: 396px;
+}
+
 .header__logo-click {
     margin: 0;
     padding: 0;
