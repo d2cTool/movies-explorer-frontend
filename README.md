@@ -8,3 +8,5 @@ FE часть дипломного проекта на Яндекс.Практи
 - React.js
 - React hooks
 - React router
+
+http://d2c.nomoredomains.xyz/
