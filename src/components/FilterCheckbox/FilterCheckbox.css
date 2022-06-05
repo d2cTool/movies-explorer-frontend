@@ -1,14 +1,15 @@
 .filter {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 0 0 29px;
+    display: grid;
+    grid-template-areas: "checkbox label";
+    grid-template-columns: min-content auto;
+    padding: 0;
     margin: 0;
-    border-left: 1px solid #CBCBCB;
+    margin-top: 33px;
 }
 
 .filter__container {
     cursor: pointer;
+    grid-area: checkbox;
 }
 
 .filter__input {
@@ -24,7 +25,7 @@
     background-color: inherit;
     border: none;
     padding: 0;
-    margin: 7px 14px 7px 0;
+    margin: 0;
 }
 
 .filter__other:hover {
@@ -36,21 +37,23 @@
 }
 
 .filter__text {
+    grid-area: label;
     font-weight: 400;
     font-size: 13px;
     line-height: 18px;
-    margin: 8px 11px 0 0;
-    padding: 0;
-    text-align: right;
+    margin: 0;
+    padding: 0 14px;
 }
 
 @media (max-width: 912px) {
     .filter {
+        grid-template-areas: "label checkbox";
+        grid-template-columns: auto min-content;
         padding: 0 0 0 19px;
     }
 
     .filter__text {
-        margin: 8px 0;
+        text-align: right;
     }
 }
 

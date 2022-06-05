@@ -8,12 +8,12 @@
     box-sizing: border-box;
     max-width: 1280px;
     width: 100%;
-    position: relative;
 }
 
 .header_type_custom {
-    padding: 70px 0 0;
+    padding: 0;
     margin: 0 auto;
+    margin-top: 56px;
     width: 396px;
 }
 
@@ -62,5 +62,9 @@
         padding: 56px 0 0;
     }
 
+    .header_type_custom {
+        justify-content: center;
+        width: 320px;
+    }
 }
 

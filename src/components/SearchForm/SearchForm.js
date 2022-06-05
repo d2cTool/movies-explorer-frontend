@@ -5,14 +5,14 @@ import './SearchForm.css';
 import { messageKeyWordMovies } from '../../utils/utils';
 
 
-function SearchForm(props) { 
+function SearchForm(props) {
     const location = useLocation();
     const isLocationMovies = location.pathname === '/movies';
 
     const [currentValue, setCurrentValue] = React.useState();
     const [isEmpty, setIsEmpty] = React.useState(true);
 
-    
+
     function handelIsSearchMovies(evt) {
         setCurrentValue(evt.target.value)
         if (isLocationMovies) {
@@ -31,19 +31,19 @@ function SearchForm(props) {
             }
         }
     },// eslint-disable-next-line
-    [currentValue, isEmpty]);
+        [currentValue, isEmpty]);
 
     function handleSubmit(evt) {
-        
+
         evt.preventDefault();
 
         if (isLocationMovies) {
-            if (!props.searchMovies ) {
+            if (!props.searchMovies) {
                 props.setMessageSearchResult(messageKeyWordMovies);
                 return;
             }
         } else {
-            if (!props.searchSavedMovies ) {
+            if (!props.searchSavedMovies) {
                 props.setMessageSearchResult(messageKeyWordMovies);
                 return;
             }
@@ -51,7 +51,7 @@ function SearchForm(props) {
         props.setMessageSearchResult(null);
         props.setIsPreloader(true);
         props.onGetMovies();
-        setTimeout(() =>  props.setIsPreloader(false), 700);
+        setTimeout(() => props.setIsPreloader(false), 700);
 
     }
 
@@ -60,13 +60,11 @@ function SearchForm(props) {
             <div className="form__desctop">
                 <form
                     onSubmit={handleSubmit}
-                    name="search-films" 
-                    className="form-search"
-                    noValidate>
-                        <div className="search-films__container search-films__container_decktop">
-                            <svg className="search-films__icon"></svg>
-                            <input 
-                            id="search" 
+                    name="search-films"
+                    className="form-search">
+                    <div className="search-films__container search-films__container_decktop">
+                        <input
+                            id="search"
                             name="search"
                             type="text"
                             value={isLocationMovies ? props.searchMovies || "" : props.searchSavedMovies || ""}
@@ -75,35 +73,34 @@ function SearchForm(props) {
                             minLength="1"
                             placeholder="Фильм"
                             onChange={handelIsSearchMovies}
-                            />
-                            <button
-                                type="submit"
-                                aria-label="Кнопка поиска фильмов"
-                                className="search-films__submit"
-                            >
-                            </button>
-                            <FilterCheckbox
-                                changeChecked={props.changeChecked}
-                                onGetMovies={props.onGetMovies}
-                                searchShortMovies={props.searchShortMovies}
-                                setSearchShortMovies={props.setSearchShortMovies}
-                                isChecked={props.isChecked}
-                                isCheckedSaved={props.isCheckedSaved}
-                            />
-                        </div>  
+                        />
+                        <button
+                            type="submit"
+                            aria-label="Кнопка поиска фильмов"
+                            className="search-films__submit"
+                        > Найти
+                        </button>
+                    </div>
+                    <FilterCheckbox
+                            changeChecked={props.changeChecked}
+                            onGetMovies={props.onGetMovies}
+                            searchShortMovies={props.searchShortMovies}
+                            setSearchShortMovies={props.setSearchShortMovies}
+                            isChecked={props.isChecked}
+                            isCheckedSaved={props.isCheckedSaved}
+                        />
                 </form>
             </div>
-                
-            <div className="form__modile">
+
+            {/* <div className="form__mobile">
                 <form
                     onSubmit={handleSubmit}
-                    name="search-films" 
+                    name="search-films"
                     noValidate
                     className="form-search">
                     <div className="search-films__container">
-                        <svg className="search-films__icon"></svg>
-                        <input 
-                            id="search" 
+                        <input
+                            id="search"
                             name="search"
                             type="text"
                             value={isLocationMovies ? props.searchMovies || "" : props.searchSavedMovies || ""}
@@ -112,13 +109,13 @@ function SearchForm(props) {
                             minLength="2"
                             placeholder="Фильм"
                             onChange={handelIsSearchMovies}
-                            />
+                        />
                         <button
                             type="submit"
                             aria-label="Кнопка поиска фильмов"
                             className="search-films__submit"
                         >
-                        </button> 
+                        </button>
                     </div>
                     <FilterCheckbox
                         changeChecked={props.changeChecked}
@@ -129,9 +126,9 @@ function SearchForm(props) {
                         isCheckedSaved={props.isCheckedSaved}
                     />
                 </form>
-            </div>
+            </div> */}
         </>
-        
+
     );
 }
 

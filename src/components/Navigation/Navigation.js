@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation, NavLink, useHistory } from 'react-router-dom';
 import './Navigation.css';
+import logo from '../../images/acc-logo.svg';
 
 function Navigation(props) {
     const location = useLocation();
@@ -12,7 +13,7 @@ function Navigation(props) {
     const [isMenu, setIsMenu] = React.useState(false);
     const [isActiveMovies, setIsActiveMovies] = React.useState(false);
     const [isActiveMoviesSaved, setIsActiveMoviesSaved] = React.useState(false);
-    const history = useHistory ();
+    const history = useHistory();
 
     function handleBasic() {
         setIsMenu(false);
@@ -20,13 +21,13 @@ function Navigation(props) {
     }
 
     function handleSignIn() {
-        
-    }    
-    
-    function handleProfile() {
-        
+
     }
-    
+
+    function handleProfile() {
+
+    }
+
     function handleMovies() {
         setIsMenu(false);
         setIsActiveMovies(true);
@@ -39,7 +40,7 @@ function Navigation(props) {
         setIsActiveMoviesSaved(true);
     }
 
-    function handleMenu () {
+    function handleMenu() {
         setIsMenu(true);
     }
 
@@ -67,7 +68,7 @@ function Navigation(props) {
                     </div>
                 }
 
-                { props.islogOn && islocationBasic &&
+                {props.islogOn && islocationBasic &&
                     <div className={`navigation__conteiner-centered ${isMenu ? "navigation__container-centered_type_column" : ""}`}>
                         <button
                             type="button"
@@ -82,7 +83,10 @@ function Navigation(props) {
                         </div>
                         <div className={`navigation__container-office ${isMenu ? "navigation__container-office_type_column " : ""}`}>
                             <NavLink onClick={handleProfile} className="navigation__nav-item" to={"/profile"}>
-                                Аккаунт
+                                <div className='navigation__logo-container'>
+                                    Аккаунт
+                                    <img className='navigation__logo' src={logo} alt="Аккаунт лого" />
+                                </div>
                             </NavLink>
                         </div>
                     </div>
@@ -97,13 +101,16 @@ function Navigation(props) {
                             onClick={handleMenuClose}>
                         </button>
                         <div className={`navigation__container-film ${isMenu ? "navigation__container-film_type_column" : ""}`}>
-                            {isMenu && <NavLink onClick={handleBasic} className="navigation__nav-item" activeClassName={islocationBasic ? "navigation__nav-item_type_column" : ""}  to={"/"}>Главная</NavLink>}
+                            {isMenu && <NavLink onClick={handleBasic} className="navigation__nav-item" activeClassName={islocationBasic ? "navigation__nav-item_type_column" : ""} to={"/"}>Главная</NavLink>}
                             <NavLink onClick={handleMovies} className={`navigation__nav-item ${isActiveMovies && !isMenu ? "navigation__nav-item_active" : ""} ${isActiveMovies && isMenu ? "navigation__nav-item_type_column" : ""}`} to={"/movies"}>Фильмы</NavLink>
                             <NavLink onClick={handleSavedMovies} className={`navigation__nav-item ${isActiveMoviesSaved && !isMenu ? "navigation__nav-item_active" : ""} ${isActiveMoviesSaved && isMenu ? "navigation__nav-item_type_column" : ""}`} to={"/saved-movies"}>Сохраненные фильмы</NavLink>
                         </div>
                         <div className={`navigation__container-office ${isMenu ? "navigation__container-office_type_column " : ""}`}>
                             <NavLink onClick={handleProfile} className="navigation__nav-item" to={"/profile"}>
-                                Аккаунт
+                                <div className='navigation__logo-container'>
+                                    Аккаунт
+                                    <img className='navigation__logo' src={logo} alt="Аккаунт лого" />
+                                </div>
                             </NavLink>
                         </div>
                     </div>
@@ -112,10 +119,10 @@ function Navigation(props) {
             </nav>
 
             {props.islogOn &&
-                <div onClick={handleMenu} className= {`navigation__burger-menu ${isMenu ? "navigation__burger-menu_inactive" : ""}`}>
-                <div className="navigation__burger-item"></div>
-                <div className="navigation__burger-item"></div>
-                <div className="navigation__burger-item"></div>
+                <div onClick={handleMenu} className={`navigation__burger-menu ${isMenu ? "navigation__burger-menu_inactive" : ""}`}>
+                    <div className="navigation__burger-item"></div>
+                    <div className="navigation__burger-item"></div>
+                    <div className="navigation__burger-item"></div>
                 </div>
             }
         </div>
