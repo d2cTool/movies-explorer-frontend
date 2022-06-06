@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3e04f425.css",
+    "main.js": "/static/js/main.c5fe514f.js",
+    "static/js/787.5fef94a4.chunk.js": "/static/js/787.5fef94a4.chunk.js",
+    "static/media/Inter-Medium.woff2": "/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
+    "static/media/photo.jpg": "/static/media/photo.b997ab9b08e64cc19641.jpg",
+    "static/media/Inter-Regular.woff2": "/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/Suisse-Intl.woff": "/static/media/Suisse-Intl.30ae00c5878ced60ac91.woff",
+    "static/media/logo.svg": "/static/media/logo.5452f67d49f4ddc8efa7d5c04ab587e8.svg",
+    "index.html": "/index.html",
+    "static/media/search.svg": "/static/media/search.9d65490bd05e8f3d78d3.svg",
+    "static/media/acc-logo.svg": "/static/media/acc-logo.3c9d21afd3dbdfdc35a7cd0b560300d0.svg",
+    "static/media/heart.svg": "/static/media/heart.e78b4556cab1bba563e4.svg",
+    "static/media/heart-active.svg": "/static/media/heart-active.12bee29d820131aa1152.svg",
+    "static/media/close.svg": "/static/media/close.80dfd5bd01b8fe0a895e.svg",
+    "static/media/arrow.svg": "/static/media/arrow.1e8c560a0bd36207d185d8a36d457dfb.svg",
+    "static/media/find_films.svg": "/static/media/find_films.a061586bda63b752a3c3.svg",
+    "static/media/checkbox_grey.svg": "/static/media/checkbox_grey.2123b8574895470f3215.svg",
+    "static/media/checkbox.svg": "/static/media/checkbox.06824562882e245c55c5.svg",
+    "main.3e04f425.css.map": "/static/css/main.3e04f425.css.map",
+    "main.c5fe514f.js.map": "/static/js/main.c5fe514f.js.map",
+    "787.5fef94a4.chunk.js.map": "/static/js/787.5fef94a4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3e04f425.css",
+    "static/js/main.c5fe514f.js"
+  ]
+}

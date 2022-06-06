@@ -1,0 +1,71 @@
+.filter {
+    display: grid;
+    grid-template-areas: "checkbox label";
+    grid-template-columns: min-content auto;
+    padding: 0;
+    margin: 0;
+    margin-top: 33px;
+}
+
+.filter__container {
+    cursor: pointer;
+    grid-area: checkbox;
+}
+
+.filter__input {
+    display: none;
+}
+
+.filter__other {
+    height: 20px;
+    width: 36px;
+    background-image: url("/src/images/checkbox.svg");
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    background-color: inherit;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filter__other:hover {
+    opacity: .6;
+}
+
+.filter__other_active {
+    background-image: url("/src/images/checkbox_grey.svg");
+}
+
+.filter__text {
+    grid-area: label;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    margin: 0;
+    padding: 0 14px;
+}
+
+@media (max-width: 912px) {
+    .filter {
+        grid-template-areas: "label checkbox";
+        grid-template-columns: auto min-content;
+        padding: 0 0 0 19px;
+    }
+
+    .filter__text {
+        text-align: right;
+    }
+}
+
+@media (max-width: 632px) {
+    .filter {
+        justify-content: center;
+        border-left: none;
+        padding: 0;
+        margin: 0 auto;
+    }
+
+    .filter__text {
+        font-size: 11px;
+    }
+}
