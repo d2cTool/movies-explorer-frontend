@@ -11,8 +11,10 @@ function MoviesCardList(props) {
     const [additionMovies, setAdditionMovies] = React.useState(0); // количество карточек которые добаляются
     const [buttonMoviesVisible, setButtonMoviesVisible] = React.useState(true); // кнопка добавления фильмов
 
-    const movies= props.isChecked || props.isCheckedSaved ? props.searchShortMovies : props.movies;
- 
+    const movies = props.isChecked || props.isCheckedSaved ?
+        props.searchShortMovies :
+        props.movies;
+
     function handleMoviesCount() {
         if (document.documentElement.clientWidth > 800) {
             setMoviesCount(7);
@@ -33,22 +35,22 @@ function MoviesCardList(props) {
     React.useEffect(() => {
         setVisibleMovies(movies.slice(0, moviesCount))
     },// eslint-disable-next-line
-      [
-        movies,
-        moviesCount,
-    ]);
+        [
+            movies,
+            moviesCount,
+        ]);
 
     React.useEffect(() => {
-        if(visibleMovies.length === movies.length) {
+        if (visibleMovies.length === movies.length) {
             setButtonMoviesVisible(false);
         } else {
             setButtonMoviesVisible(true);
         }
     },// eslint-disable-next-line
-    [
-        movies,
-      visibleMovies,
-    ]);
+        [
+            movies,
+            visibleMovies,
+        ]);
 
     React.useEffect(() => {
         const handleResizeWindow = () => {
@@ -91,7 +93,7 @@ function MoviesCardList(props) {
                     })
                 }
             </ul>
-        
+
             {isLocationMovies && buttonMoviesVisible &&
                 (
                     <button
@@ -100,7 +102,7 @@ function MoviesCardList(props) {
                         onClick={handleIsAddMovies}
                         className="movies-list__button"
                     >Ещё</button>
-                ) 
+                )
             }
 
         </section>

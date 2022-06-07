@@ -54,18 +54,19 @@ function App() {
   const isLocationMovies = location.pathname === '/movies';
   const isLocationSavedMovies = location.pathname === '/saved-movies';
 
-  const userId = localStorage.getItem("id") || "";
-
   React.useEffect(() => {
-
-    if (userId) {
-      handleIsToken();
+    if (isLoading) {
       PAGE_WITHOUT_AUTH.includes(location.pathname) ?
         history.push("/movies") :
         history.push(location.pathname);
     }
+    else {
+      handleIsToken();
+      if (PAGE_WITHOUT_AUTH.includes(location.pathname))
+        history.push(location.pathname);
+    }
   }, // eslint-disable-next-line
-    [userId, history, location.pathname]);
+    [isLoading, history, location.pathname]);
 
   React.useEffect(() => {
     if (isLoading === true) {
@@ -109,12 +110,13 @@ function App() {
   const handleLocalStorageMovies = React.useCallback(() => {
 
     const resultMovies = JSON.parse(localStorage.getItem("resultMovies"));
-    const searchedMovieWord = localStorage.getItem("searchedMovieWord");
+    const searchedMovieWord = JSON.parse(localStorage.getItem("searchedMovieWord"));
     const searchShortMovies = JSON.parse(localStorage.getItem("searchShortMovies"));
 
-    if (resultMovies) {
-      setMovies(resultMovies);
-    } else if (searchedMovieWord) {
+    // if (resultMovies) {
+    //   setMovies(resultMovies);
+    // } else 
+    if (searchedMovieWord) {
       setSearchMovies(searchedMovieWord)
     } else
       if (searchShortMovies) {
@@ -146,7 +148,6 @@ function App() {
     login(data)
       .then((user) => {
         if (user.id) {
-          localStorage.setItem("id", user.id);
           handleIsToken();
           setFormDisabled(true);
           history.push("/movies");
@@ -165,6 +166,9 @@ function App() {
   function handleIsRegister(data) {
     register(data)
       .then((user) => {
+        localStorage.removeItem("id");
+        localStorage.clear();
+        setMovies([]);
         setCurrentUser(user);
         setFormDisabled(true);
         handleIsLogin(data);
@@ -189,6 +193,7 @@ function App() {
     localStorage.clear();
     setlogOn(false);
     setCurrentUser({});
+    console.log("handleSignOut: setMovies ");
     setMovies([]);
   }
 
@@ -221,7 +226,7 @@ function App() {
       if (handleMovies.length !== 0) {
         setMovies(handleMovies);
         localStorage.setItem("resultMovies", JSON.stringify(handleMovies));
-        localStorage.setItem("searchedMovieWord", JSON.stringify(searchMovies));
+        //localStorage.setItem("searchedMovieWord", JSON.stringify(searchMovies));
       } else {
         setMessageSearchResult(messageNotFound);
       }
