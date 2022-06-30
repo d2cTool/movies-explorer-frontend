@@ -197,7 +197,7 @@ function App() {
     localStorage.clear();
     setlogOn(false);
     setCurrentUser({});
-    console.log("handleSignOut: setMovies ");
+    //console.log("handleSignOut: setMovies ");
     setMovies([]);
     setAllMovies([]);
     setAllSavedMovies([]);
@@ -229,7 +229,6 @@ function App() {
     if (isLocationMovies) {
       const newMovies = JSON.parse(localStorage.getItem("movies"));
       const handleMovies = handleSearchMovies(newMovies, searchMovies);
-      console.log(newMovies, searchMovies,handleMovies)
 
       if (handleMovies.length !== 0) {
         setMovies(handleMovies);

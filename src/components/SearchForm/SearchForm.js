@@ -13,7 +13,7 @@ function SearchForm(props) {
     const [currentSavedValue, setCurrentSavedValue] = React.useState('');
 
     function handelIsSearchMovies(evt) {
-        console.log(evt.target.value);
+        //console.log(evt.target.value);
         isLocationMovies ?
             setCurrentValue(evt.target.value) :
             setCurrentSavedValue(evt.target.value);
@@ -51,10 +51,10 @@ function SearchForm(props) {
         evt.preventDefault();
 
         if (isLocationMovies) {
-            console.log("searchedMovieWord = " + currentValue);
+            //console.log("searchedMovieWord = " + currentValue);
             localStorage.setItem("searchedMovieWord", JSON.stringify(currentValue));
             props.setSearchMovies(currentValue);
-            console.log(currentValue);
+            //console.log(currentValue);
             if (!currentValue) {
                 props.setMessageSearchResult(messageKeyWordMovies);
                 return;
