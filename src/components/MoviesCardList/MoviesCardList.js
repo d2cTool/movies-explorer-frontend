@@ -6,10 +6,10 @@ import './MoviesCardList.css';
 function MoviesCardList(props) {
     const location = useLocation();
     const isLocationMovies = location.pathname === '/movies';
-    const [visibleMovies, setVisibleMovies] = React.useState([]); // карточки, которые будут отображаться
-    const [moviesCount, setMoviesCount] = React.useState(0); // количество карточек для отображения
-    const [additionMovies, setAdditionMovies] = React.useState(0); // количество карточек которые добаляются
-    const [buttonMoviesVisible, setButtonMoviesVisible] = React.useState(true); // кнопка добавления фильмов
+    const [visibleMovies, setVisibleMovies] = React.useState([]); 
+    const [moviesCount, setMoviesCount] = React.useState(0); 
+    const [additionMovies, setAdditionMovies] = React.useState(0); 
+    const [buttonMoviesVisible, setButtonMoviesVisible] = React.useState(true); 
 
     const movies = props.isChecked || props.isCheckedSaved ?
         props.searchShortMovies :

@@ -33,6 +33,8 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [isAuth, setIsAuth] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
+  const [allMovies, setAllMovies] = React.useState([]);
+  const [allSavedMovies, setAllSavedMovies] = React.useState([]);
   const [movies, setMovies] = React.useState([]);
   const [storedMovies, setStoredMovies] = React.useState([]);
   const [searchStoredMovies, setSearchStoredMovies] = React.useState([]);
@@ -113,15 +115,15 @@ function App() {
     const searchedMovieWord = JSON.parse(localStorage.getItem("searchedMovieWord"));
     const searchShortMovies = JSON.parse(localStorage.getItem("searchShortMovies"));
 
-    // if (resultMovies) {
-    //   setMovies(resultMovies);
-    // } else 
-    if (searchedMovieWord) {
-      setSearchMovies(searchedMovieWord)
-    } else
-      if (searchShortMovies) {
-        setSearchShortMovies(searchShortMovies);
-      }
+    //if (resultMovies) {
+    //  setMovies(resultMovies);
+    //} else
+      if (searchedMovieWord) {
+        setSearchMovies(searchedMovieWord)
+      } else
+        if (searchShortMovies) {
+          setSearchShortMovies(searchShortMovies);
+        }
 
   },// eslint-disable-next-line
     [setMovies, setSearchMovies, setSearchShortMovies]);
@@ -169,6 +171,8 @@ function App() {
         localStorage.removeItem("id");
         localStorage.clear();
         setMovies([]);
+        setAllMovies([]);
+        setAllSavedMovies([]);
         setCurrentUser(user);
         setFormDisabled(true);
         handleIsLogin(data);
@@ -188,13 +192,16 @@ function App() {
   function handleSignOut() {
     signOut();
     setIsLoading(false);
-    history.push("/");
+    
     localStorage.removeItem("id");
     localStorage.clear();
     setlogOn(false);
     setCurrentUser({});
-    console.log("handleSignOut: setMovies ");
+    //console.log("handleSignOut: setMovies ");
     setMovies([]);
+    setAllMovies([]);
+    setAllSavedMovies([]);
+    history.push("/");
   }
 
   function handleUpdateProfile(user) {
