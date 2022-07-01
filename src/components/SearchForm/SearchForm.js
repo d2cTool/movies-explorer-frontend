@@ -9,41 +9,59 @@ function SearchForm(props) {
     const location = useLocation();
     const isLocationMovies = location.pathname === '/movies';
 
-    const [currentValue, setCurrentValue] = React.useState();
-    const [isEmpty, setIsEmpty] = React.useState(true);
-
+    const [currentValue, setCurrentValue] = React.useState('');
+    const [currentSavedValue, setCurrentSavedValue] = React.useState('');
 
     function handelIsSearchMovies(evt) {
-        setCurrentValue(evt.target.value)
-        if (isLocationMovies) {
-            props.setSearchMovies(evt.target.value);
-        } else {
-            props.setSearchSavedMovies(evt.target.value);
-        }
+        //console.log(evt.target.value);
+        isLocationMovies ?
+            setCurrentValue(evt.target.value) :
+            setCurrentSavedValue(evt.target.value);
     }
 
     React.useEffect(() => {
-        if (!isLocationMovies) {
-            if (currentValue === '' && isEmpty === true) {
-                setIsEmpty(false)
-            } else if (currentValue === '' && isEmpty === false) {
-                props.onGetMovies();
-            }
+        if (isLocationMovies) {
+            const searchStr = JSON.parse(localStorage.getItem("searchedMovieWord"));
+            setCurrentValue(searchStr);
+            props.setSearchMovies(currentValue);
         }
-    },// eslint-disable-next-line
-        [currentValue, isEmpty]);
+        else {
+            setCurrentSavedValue('');
+            props.setSearchSavedMovies(currentSavedValue);
+        }
+
+        props.setMessageSearchResult(null);
+        props.setIsPreloader(true);
+        props.onGetMovies();
+        setTimeout(() => props.setIsPreloader(false), 700);
+        // eslint-disable-next-line
+    }, []);
+
+    // React.useEffect(() => {
+    //     if (!isLocationMovies) {
+    //         if (currentValue === '') {
+    //             props.onGetMovies();
+    //         }
+    //     }
+    // },// eslint-disable-next-line
+    //     [currentValue, currentSavedValue]);
 
     function handleSubmit(evt) {
 
         evt.preventDefault();
 
         if (isLocationMovies) {
-            if (!props.searchMovies) {
+            //console.log("searchedMovieWord = " + currentValue);
+            localStorage.setItem("searchedMovieWord", JSON.stringify(currentValue));
+            props.setSearchMovies(currentValue);
+            //console.log(currentValue);
+            if (!currentValue) {
                 props.setMessageSearchResult(messageKeyWordMovies);
                 return;
             }
         } else {
-            if (!props.searchSavedMovies) {
+            props.setSearchSavedMovies(currentSavedValue);
+            if (!currentSavedValue) {
                 props.setMessageSearchResult(messageKeyWordMovies);
                 return;
             }
@@ -52,7 +70,6 @@ function SearchForm(props) {
         props.setIsPreloader(true);
         props.onGetMovies();
         setTimeout(() => props.setIsPreloader(false), 700);
-
     }
 
     return (
@@ -67,7 +84,7 @@ function SearchForm(props) {
                             id="search"
                             name="search"
                             type="text"
-                            value={isLocationMovies ? props.searchMovies || "" : props.searchSavedMovies || ""}
+                            value={isLocationMovies ? currentValue || "" : currentSavedValue || ""}
                             className="search-films__input"
                             required
                             minLength="1"
@@ -82,13 +99,13 @@ function SearchForm(props) {
                         </button>
                     </div>
                     <FilterCheckbox
-                            changeChecked={props.changeChecked}
-                            onGetMovies={props.onGetMovies}
-                            searchShortMovies={props.searchShortMovies}
-                            setSearchShortMovies={props.setSearchShortMovies}
-                            isChecked={props.isChecked}
-                            isCheckedSaved={props.isCheckedSaved}
-                        />
+                        changeChecked={props.changeChecked}
+                        onGetMovies={props.onGetMovies}
+                        searchShortMovies={props.searchShortMovies}
+                        setSearchShortMovies={props.setSearchShortMovies}
+                        isChecked={props.isChecked}
+                        isCheckedSaved={props.isCheckedSaved}
+                    />
                 </form>
             </div>
 
